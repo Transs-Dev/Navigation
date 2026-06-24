@@ -15,9 +15,13 @@ class HomeScreen extends StatelessWidget {
     } else {
       await FlutterOverlayWindow.showOverlay(
         enableDrag: true,
-        flag: OverlayFlag.defaultFlag,
+        // Using focusable or specific interaction flags ensures it floats securely over lock layers
+        flag: OverlayFlag.clickThrough, 
         alignment: OverlayAlignment.center,
+        // Forces the overlay to remain visible on secure public screens (Lockscreen)
         visibility: NotificationVisibility.visibilityPublic,
+        height: 150, 
+        width: 950, 
       );
     }
   }
